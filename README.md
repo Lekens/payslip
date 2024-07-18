@@ -22,6 +22,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-Expected LOOK
-![](../../../../var/folders/m_/jy5_sh653nlgym8n3y_5qf440000gn/T/TemporaryItems/NSIRD_screencaptureui_xyJfUv/Screenshot 2024-07-18 at 23.47.35.png)
