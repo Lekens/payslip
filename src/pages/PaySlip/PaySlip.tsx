@@ -35,7 +35,7 @@ function PaySlip() {
     });
 
     return (
-        <IonPage id="view-message-page">
+        <IonPage id="view-payslip-page">
             <IonHeader translucent>
                 <IonToolbar>
                     <IonButtons slot="start">

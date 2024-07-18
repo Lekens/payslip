@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  IonAvatar,
   IonContent,
   IonHeader, IonItem, IonLabel,
   IonList,
@@ -20,7 +21,8 @@ const Home: React.FC = () => {
   const handleGetSlips = (cb?: () => void) => {
     const paySlips = getPaySlips();
     setPaySlips(paySlips);
-    if(cb)cb();
+    // trigger callback if supplied.
+    cb?.();
   }
 
   useIonViewWillEnter(() => {
@@ -41,7 +43,7 @@ const Home: React.FC = () => {
             <IonTitle>Pay Slips</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent fullscreen>
+        <IonContent>
           <IonRefresher slot="fixed" onIonRefresh={refresh}>
             <IonRefresherContent />
           </IonRefresher>
@@ -55,9 +57,11 @@ const Home: React.FC = () => {
           </IonHeader>
 
           <IonList>
-            {paySlips.map(({id, fromDate, toDate}) =>
-            <IonItem key={id} routerLink={`/pay-slip/${id}`} detail={false}>
-              <div slot="start" className="dot dot-unread" />
+            {paySlips.map(({id, fromDate, toDate, file}) =>
+            <IonItem key={id} routerLink={`/pay-slip/${id}`} detail={true} button={true}>
+              <IonAvatar aria-hidden="true" slot="start">
+                <img alt="" src={file} />
+              </IonAvatar>
               <IonLabel className="ion-text-wrap">
                 <h2>
                   Date From: {fromDate?.toDateString()}
@@ -65,6 +69,7 @@ const Home: React.FC = () => {
                   Date To: {toDate?.toDateString()}
                 </h2>
               </IonLabel>
+
             </IonItem>
             )}
           </IonList>
